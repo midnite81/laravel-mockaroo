@@ -1,0 +1,16 @@
+{
+    "name": "midnite81/laravel-mockaroo",
+    "description": "A set of randomly generated dummy data for testing purposes",
+    "type": "package",
+    "require": {
+        "fzaninotto/faker": "^1.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Rogers",
+            "email": "webdev@centralblue.co.uk"
+        }
+    ],
+    "minimum-stability": "stable"
+}
