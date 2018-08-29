@@ -1,0 +1,6 @@
+BASE_PATH=/src
+BASE_NAMESPACE=Midnite81\LaravelMockaroo
+USER_MODEL=Midnite81\LaravelMockaroo\Models\User
+MIGRATION_PATH=src/database/migrations
+SEEDER_PATH=src/database/seeds
+MODEL_PATH=src/Models
