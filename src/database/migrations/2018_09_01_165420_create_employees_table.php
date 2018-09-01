@@ -42,14 +42,13 @@ class CreateEmployeesTable extends Migration
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign('title_id')->references('id')->on('titles')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign('gender_id')->references('id')->on(mockaroo_prefix('genders'))->onDelete('set null')->onUpdate('cascade');
+                $table->foreign('title_id')->references('id')->on(mockaroo_prefix('titles'))->onDelete('set null')->onUpdate('cascade');
                 $table->foreign('manager_id')->references('id')->on($this->tableName)->onDelete('set null')->onUpdate('cascade');
             });
         } else {
             console_write($this->tableName . ' already exists and so hasn\'t been created');
         }
-
     }
 
     /**
