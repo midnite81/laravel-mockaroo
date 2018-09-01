@@ -31,7 +31,7 @@ class CreateLocationsTable extends Migration
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->foreign('country_id')->references('id')->on(mockaroo_prefix('countries'))->onDelete('set null')->onUpdate('casade');
+                $table->foreign('country_id')->references('id')->on(mockaroo_prefix('countries'))->onDelete('set null')->onUpdate('cascsade');
             });
         } else {
             console_write($this->tableName . ' already exists and so hasn\'t been created');
