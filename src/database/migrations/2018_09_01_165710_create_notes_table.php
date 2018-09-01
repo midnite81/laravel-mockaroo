@@ -23,11 +23,15 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id');
-            $table->morphs('notable');
-            $table->timestamps();
-        });
+        if (! Schema::hasTable($this->tableName)) {
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id');
+                $table->morphs('notable');
+                $table->timestamps();
+            });
+        } else {
+            console_write($this->tableName . ' already exists and so hasn\'t been created');
+        }
     }
 
     /**

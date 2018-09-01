@@ -23,12 +23,17 @@ class CreateEmployeeDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->unsignedInteger('employee_id');
-            $table->unsignedInteger('department_id');
+        if (! Schema::hasTable($this->tableName)) {
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->unsignedInteger('employee_id');
+                $table->unsignedInteger('department_id');
 
-            $table->unique(['employee_id', 'department_id']);
-        });
+                $table->unique(['employee_id', 'department_id']);
+            });
+        } else {
+            console_write($this->tableName . ' already exists and so hasn\'t been created');
+        }
+
     }
 
     /**

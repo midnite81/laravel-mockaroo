@@ -23,12 +23,17 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (! Schema::hasTable($this->tableName)) {
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        } else {
+            console_write($this->tableName . ' already exists and so hasn\'t been created');
+        }
+
     }
 
     /**

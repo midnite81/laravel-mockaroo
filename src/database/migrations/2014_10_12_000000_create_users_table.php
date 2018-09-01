@@ -23,14 +23,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        if (! Schema::hasTable($this->tableName)) {
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        } else {
+            console_write($this->tableName . ' already exists and so hasn\'t been created');
+        }
     }
 
     /**

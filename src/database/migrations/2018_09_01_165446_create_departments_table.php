@@ -23,14 +23,19 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('location_id')->nullable();
-            $table->string('name');
-            $table->timestamps();
+        if (! Schema::hasTable($this->tableName)) {
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('location_id')->nullable();
+                $table->string('name');
+                $table->timestamps();
 
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
-        });
+                $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
+            });
+        } else {
+            console_write($this->tableName . ' already exists and so hasn\'t been created');
+        }
+
     }
 
     /**
