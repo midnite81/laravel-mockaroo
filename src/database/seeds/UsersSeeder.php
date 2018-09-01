@@ -1,4 +1,5 @@
 <?php
+namespace Midnite81\LaravelMockaroo\Database\Seeds;
 
 use Faker\Factory;
 use Illuminate\Database\Seeder;

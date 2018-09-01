@@ -3,6 +3,7 @@
 namespace Midnite81\LaravelMockaroo;
 
 use Illuminate\Support\ServiceProvider;
+use Midnite81\LaravelMockaroo\Database\Seeds\Mockaroo;
 
 class MockarooServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class MockarooServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/mockaroo.php', 'mockaroo');
+        $this->app->alias(Mockaroo::class, 'mockaroo-seeds');
     }
 
     /**
