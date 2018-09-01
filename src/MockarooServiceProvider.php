@@ -36,10 +36,10 @@ class MockarooServiceProvider extends ServiceProvider
     protected function loadMigrations()
     {
         if (method_exists($this, 'loadMigrationsFrom')) {
-            $this->loadMigrationsFrom(__DIR__ . '/src/database/migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         } else {
             $this->publishes([
-                __DIR__ . '/src/database/migrations' => database_path('migrations')
+                __DIR__ . '/database/migrations' => database_path('migrations')
             ], 'migrations');
         }
 
