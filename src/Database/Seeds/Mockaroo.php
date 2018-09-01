@@ -14,8 +14,8 @@ class Mockaroo extends Seeder
     {
         $this->call(GenderSeeder::class);
         $this->call(TitleSeeder::class);
-        $this->call(LocationSeeder::class);
         $this->call(CountrySeeder::class);
+        $this->call(LocationSeeder::class);
         $this->call(EmployeeSeeder::class);
         $this->call(DepartmentSeeder::class);
         $this->call(EmployeeDepartmentSeeder::class);

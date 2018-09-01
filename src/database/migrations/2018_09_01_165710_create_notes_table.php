@@ -27,6 +27,7 @@ class CreateNotesTable extends Migration
             Schema::create($this->tableName, function (Blueprint $table) {
                 $table->increments('id');
                 $table->morphs('notable');
+                $table->mediumText('notes');
                 $table->timestamps();
             });
         } else {
