@@ -13,7 +13,7 @@ class CreateLocationsTable extends Migration
 
     public function __construct()
     {
-        $this->tableName = mockaroo_prefix('countries');
+        $this->tableName = mockaroo_prefix('locations');
     }
     
     /**
