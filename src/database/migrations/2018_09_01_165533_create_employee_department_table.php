@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateEmployeeDepartmentTable extends Migration
 {
     /**
      * @var string
@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
 
     public function __construct()
     {
-        $this->tableName = mockaroo_prefix('users');
+        $this->tableName = mockaroo_prefix('employee_department');
     }
 
     /**
@@ -24,12 +24,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('department_id');
+
+            $table->unique(['employee_id', 'department_id']);
         });
     }
 

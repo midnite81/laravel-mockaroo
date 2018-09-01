@@ -11,7 +11,10 @@
     "autoload": {
         "psr-4": {
             "Midnite81\\LaravelMockaroo\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/general.php"
+        ]
     },
     "license": "MIT",
     "authors": [
@@ -20,5 +23,12 @@
             "email": "webdev@centralblue.co.uk"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Midnite81\\LaravelMockaroo\\MockarooServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable"
 }

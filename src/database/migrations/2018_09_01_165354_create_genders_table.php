@@ -4,8 +4,18 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersTable extends Migration
+class CreateGendersTable extends Migration
 {
+    /**
+     * @var string
+     */
+    protected $tableName;
+
+    public function __construct()
+    {
+        $this->tableName = mockaroo_prefix('genders');
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,9 +23,11 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create($this->tableName, function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +38,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists($this->tableName);
     }
 }
