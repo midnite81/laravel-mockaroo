@@ -28,6 +28,8 @@ class CreateEmployeeDepartmentTable extends Migration
                 $table->unsignedInteger('employee_id');
                 $table->unsignedInteger('department_id');
 
+                $table->foreign('employee_id')->references('id')->on(mockaroo_prefix('employees'))->onDelete('cascade')->onUpdate('cascade');
+                $table->foreign('department_id')->references('id')->on(mockaroo_prefix('departments'))->onDelete('cascade')->onUpdate('cascade');
                 $table->unique(['employee_id', 'department_id']);
             });
         } else {

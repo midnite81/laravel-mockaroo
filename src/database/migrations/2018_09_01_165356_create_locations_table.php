@@ -26,9 +26,12 @@ class CreateLocationsTable extends Migration
         if (! Schema::hasTable($this->tableName)) {
             Schema::create($this->tableName, function (Blueprint $table) {
                 $table->increments('id');
+                $table->unsignedInteger('country_id')->nullable();
                 $table->string('name');
                 $table->timestamps();
                 $table->softDeletes();
+
+                $table->foreign('country_id')->references('id')->on(mockaroo_prefix('countries'))->onDelete('set null')->onUpdate('casade');
             });
         } else {
             console_write($this->tableName . ' already exists and so hasn\'t been created');

@@ -30,7 +30,7 @@ class CreateDepartmentsTable extends Migration
                 $table->string('name');
                 $table->timestamps();
 
-                $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign('location_id')->references('id')->on(mockaroo_prefix('locations'))->onDelete('set null')->onUpdate('cascade');
             });
         } else {
             console_write($this->tableName . ' already exists and so hasn\'t been created');
